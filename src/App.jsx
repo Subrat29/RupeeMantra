@@ -8,6 +8,8 @@ import PersonalLoan from './components/loans/PersonalLoan';
 import EMICalculator from './components/calculators/EMICalculator';
 import EligibilityCalculator from './components/calculators/EligibilityCalculator';
 import LandingPage from './components/LandingPage';
+import ThankYouPage from './components/ThankYouPage';
+import LoanOffersTable  from './components/loans/LoanOffersTable'
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/personal-loan" element={<Layout><PersonalLoan /></Layout>} />
         <Route path="/emi-calculator" element={<Layout><EMICalculator /></Layout>} />
         <Route path="/eligibility-calculator" element={<Layout><EligibilityCalculator /></Layout>} />
+        <Route path="/thank-you" element={<Layout><ThankYouPage /></Layout>} />
+        <Route path="/loan-offers" element={<Layout><LoanOffersTable /></Layout>} />
       </Routes>
     </Router>
   );
