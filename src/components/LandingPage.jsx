@@ -1,6 +1,45 @@
 import React from 'react';
 
 const LandingPage = () => {
+
+  const loanInterestRates = [
+    {
+      id: 1,
+      loanType: "Home Loan",
+      lowestRate: "6.70%",
+    },
+    {
+      id: 2,
+      loanType: "Personal Loan",
+      lowestRate: "10.55%",
+    },
+    {
+      id: 3,
+      loanType: "Car Loan",
+      lowestRate: "9.25%",
+    },
+    {
+      id: 4,
+      loanType: "Education Loan",
+      lowestRate: "9.00%",
+    },
+    {
+      id: 5,
+      loanType: "Gold Loan",
+      lowestRate: "10.50%",
+    },
+    {
+      id: 6,
+      loanType: "Business Loan",
+      lowestRate: "14.00%",
+    },
+    {
+      id: 7,
+      loanType: "Loan Against Property",
+      lowestRate: "9.35%",
+    },
+  ];
+
   return (
     <div className="bg-gray-50 min-h-screen">
 
@@ -31,6 +70,63 @@ const LandingPage = () => {
             <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
               <h3 className="text-2xl font-semibold mb-4">Dynamic Forms</h3>
               <p>Get personalized financial solutions with dynamic and responsive forms.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Loan Steps Section */}
+      <section id="features" className="py-16 bg-white">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-8">How it works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+              <h3 className="text-2xl font-semibold mb-4">Check eligibility</h3>
+              <p>Check your eligibility fora loan</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+              <h3 className="text-2xl font-semibold mb-4">Submit application</h3>
+              <p>Complete a 100% application form & Document Collection At Your Door Steps</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+              <h3 className="text-2xl font-semibold mb-4">Get sanctioned</h3>
+              <p>We will evaluate your application propose a fair sanction</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+              <h3 className="text-2xl font-semibold mb-4">Receive funds</h3>
+              <p>Receive your loan within 7 days</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lowest Loan Interest Rates Section */}
+      <section id="features" className="py-16 bg-white">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-8">Lowest Loan Interest Rates</h2>
+          <div className="grid grid-cols-1 gap-8">
+            <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+              <div className="container mx-auto p-4">
+                <h1 className="text-2xl font-bold text-center mb-8">Current Interest Rates</h1>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full text-left border-collapse">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="p-4 font-medium">Loan Type</th>
+                        <th className="p-4 font-medium">Lowest Rate %</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {loanInterestRates.map((loan, index) => (
+                        <tr key={loan.id} className={`border-b ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+                          <td className="p-4">{loan.loanType}</td>
+                          <td className="p-4">{loan.lowestRate}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>
