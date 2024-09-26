@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
 
@@ -7,36 +8,43 @@ const LandingPage = () => {
       id: 1,
       loanType: "Home Loan",
       lowestRate: "6.70%",
+      url: "/home-loan-interest-rates"
     },
     {
       id: 2,
       loanType: "Personal Loan",
       lowestRate: "10.55%",
+      url: "/personal-loan-interest-rates"
     },
     {
       id: 3,
       loanType: "Car Loan",
       lowestRate: "9.25%",
+      url: "/car-loan-interest-rates"
     },
     {
       id: 4,
       loanType: "Education Loan",
       lowestRate: "9.00%",
+      url: "/education-loan-interest-rates"
     },
     {
       id: 5,
       loanType: "Gold Loan",
       lowestRate: "10.50%",
+      url: "/gold-loan-interest-rates"
     },
     {
       id: 6,
       loanType: "Business Loan",
       lowestRate: "14.00%",
+      url: "/business-loan-interest-rates"
     },
     {
       id: 7,
       loanType: "Loan Against Property",
       lowestRate: "9.35%",
+      url: "/loan-against-property-interest-rates"
     },
   ];
 
@@ -108,10 +116,10 @@ const LandingPage = () => {
             <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
               <div className="container mx-auto p-4">
                 <h1 className="text-2xl font-bold text-center mb-8">Current Interest Rates</h1>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto border">
                   <table className="min-w-full text-left border-collapse">
                     <thead>
-                      <tr className="bg-gray-100">
+                      <tr className="bg-yellow-600 text-white">
                         <th className="p-4 font-medium">Loan Type</th>
                         <th className="p-4 font-medium">Lowest Rate %</th>
                       </tr>
@@ -119,7 +127,9 @@ const LandingPage = () => {
                     <tbody>
                       {loanInterestRates.map((loan, index) => (
                         <tr key={loan.id} className={`border-b ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
-                          <td className="p-4">{loan.loanType}</td>
+                          <td className="p-4">
+                            <Link to={loan.url} className="text-blue-600 ml-2 hover:underline">{loan.loanType}</Link>
+                          </td>
                           <td className="p-4">{loan.lowestRate}</td>
                         </tr>
                       ))}

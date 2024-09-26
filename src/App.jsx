@@ -10,6 +10,7 @@ import EligibilityCalculator from './components/calculators/EligibilityCalculato
 import LandingPage from './components/LandingPage';
 import ThankYouPage from './components/ThankYouPage';
 import LoanOffersTable  from './components/loans/LoanOffersTable'
+import HomeLoanInterestRates from './components/loanInterestRates/HomeLoanInterestRates';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/eligibility-calculator" element={<Layout><EligibilityCalculator /></Layout>} />
         <Route path="/thank-you" element={<Layout><ThankYouPage /></Layout>} />
         <Route path="/loan-offers" element={<Layout><LoanOffersTable /></Layout>} />
+        <Route path="/home-loan-interest-rates" element={<Layout><HomeLoanInterestRates /></Layout>} />
       </Routes>
     </Router>
   );
