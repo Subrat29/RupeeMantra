@@ -60,28 +60,28 @@ function Footer() {
                         </h3>
                         <ul>
                             <li className="mb-4">
-                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/">
+                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/home-loan">
                                     Home Loans
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/">
+                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/loan-against-property">
                                     Loan Against Property
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/">
+                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/personal-loan">
                                     Personal Loans
+                                </Link>
+                            </li>
+                            <li>
+                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/business-loan">
+                                    Business Loans
                                 </Link>
                             </li>
                             <li className="mb-4">
                                 <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/">
                                     Gold Loans
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/">
-                                    Business Loans
                                 </Link>
                             </li>
                         </ul>
@@ -94,7 +94,7 @@ function Footer() {
                         </h3>
                         <ul>
                             <li className="mb-4">
-                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/">
+                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/about-us">
                                     About Us
                                 </Link>
                             </li>
@@ -109,12 +109,12 @@ function Footer() {
                                 </Link>
                             </li>
                             <li className="mb-4">
-                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/">
+                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/emi-calculator">
                                     EMI Calculator
                                 </Link>
                             </li>
                             <li>
-                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/">
+                                <Link className="text-base font-medium hover:text-yellow-600 dark:hover:text-yellow-400" to="/eligibility-calculator">
                                     Eligibility Calculator
                                 </Link>
                             </li>

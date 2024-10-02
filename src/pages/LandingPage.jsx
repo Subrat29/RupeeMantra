@@ -14,7 +14,19 @@ const LandingPage = () => {
       id: 2,
       loanType: "Personal Loan",
       lowestRate: "10.55%",
-      url: "/personal-loan-interest-rates"
+      url: "/personal-loan"
+    },
+    {
+      id: 6,
+      loanType: "Business Loan",
+      lowestRate: "14.00%",
+      url: "/business-loan"
+    },
+    {
+      id: 7,
+      loanType: "Loan Against Property",
+      lowestRate: "9.35%",
+      url: "/loan-against-property"
     },
     {
       id: 3,
@@ -33,18 +45,6 @@ const LandingPage = () => {
       loanType: "Gold Loan",
       lowestRate: "10.50%",
       url: "/gold-loan-interest-rates"
-    },
-    {
-      id: 6,
-      loanType: "Business Loan",
-      lowestRate: "14.00%",
-      url: "/business-loan-interest-rates"
-    },
-    {
-      id: 7,
-      loanType: "Loan Against Property",
-      lowestRate: "9.35%",
-      url: "/loan-against-property-interest-rates"
     },
   ];
 

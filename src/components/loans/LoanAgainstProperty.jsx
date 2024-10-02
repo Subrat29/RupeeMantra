@@ -1,10 +1,10 @@
 import React from 'react';
+import LoanForm from '../LoanApplication/LoanForm'
 
 const LoanAgainstProperty = () => {
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-2xl font-bold">LoanAgainstProperty</h1>
-      <p>Details about LoanAgainstProperty...</p>
+    <div>
+      <LoanForm loanType='Loan Against Property' />
     </div>
   );
 };

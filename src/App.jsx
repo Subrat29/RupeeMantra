@@ -7,10 +7,12 @@ import BusinessLoan from './components/loans/BusinessLoan';
 import PersonalLoan from './components/loans/PersonalLoan';
 import EMICalculator from './components/calculators/EMICalculator';
 import EligibilityCalculator from './components/calculators/EligibilityCalculator';
-import LandingPage from './components/LandingPage';
-import ThankYouPage from './components/ThankYouPage';
-import LoanOffersTable  from './components/loans/LoanOffersTable'
+import LoanOffersTable  from './components/LoanApplication/LoanOffersTable';
 import HomeLoanInterestRates from './components/loanInterestRates/HomeLoanInterestRates';
+import LandingPage from './pages/LandingPage';
+import ThankYouPage from './pages/ThankYouPage';
+import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/thank-you" element={<Layout><ThankYouPage /></Layout>} />
         <Route path="/loan-offers" element={<Layout><LoanOffersTable /></Layout>} />
         <Route path="/home-loan-interest-rates" element={<Layout><HomeLoanInterestRates /></Layout>} />
+        <Route path="/about-us" element={<Layout><AboutUs /></Layout>} />
+        <Route path="/contact-us" element={<Layout><ContactUs /></Layout>} />
       </Routes>
     </Router>
   );

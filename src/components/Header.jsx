@@ -94,10 +94,10 @@ const Header = () => {
           </div>
 
           {/* About */}
-          <Link to="/about" className="hover:bg-yellow-600 px-4 py-2 rounded">About</Link>
+          <Link to="/about-us" className="hover:bg-yellow-600 px-4 py-2 rounded">About</Link>
 
           {/* Contact */}
-          <Link to="/contact" className="hover:bg-yellow-600 px-4 py-2 rounded">Contact</Link>
+          <Link to="/contact-us" className="hover:bg-yellow-600 px-4 py-2 rounded">Contact</Link>
         </nav>
       </div>
     </header>

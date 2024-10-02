@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import BankModal from './BankModal'; // Modal component for bank details
-import { useNavigate } from 'react-router-dom'; // For navigation to thank-you page
+import BankModal from './BankModal';
+import { useNavigate } from 'react-router-dom';
 
 const LoanOffersTable = () => {
   const [selectedBank, setSelectedBank] = useState(null);
@@ -53,43 +53,43 @@ const LoanOffersTable = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-center mb-8">Best Loan Offers</h1>
+    <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-lg min-h-screen">
+      <h1 className="text-3xl font-bold text-center text-yellow-600 mb-8">Best Loan Offers</h1>
       <div className="overflow-x-auto">
-        <table className="min-w-full text-left border-collapse">
+        <table className="min-w-full text-left border-collapse bg-white">
           <thead>
-            <tr className="bg-gray-100">
-              <th className="p-4 font-medium">Bank Name</th>
-              <th className="p-4 font-medium">Loan Amount</th>
-              <th className="p-4 font-medium">EMI (Per Month)</th>
-              <th className="p-4 font-medium">Interest Rate</th>
-              <th className="p-4 font-medium">Processing Fee</th>
-              <th className="p-4 font-medium">Tenure</th>
-              <th className="p-4 font-medium"></th>
+            <tr className="bg-gray-200">
+              <th className="p-4 font-semibold text-gray-700">Bank Name</th>
+              <th className="p-4 font-semibold text-gray-700">Loan Amount</th>
+              <th className="p-4 font-semibold text-gray-700">EMI (Per Month)</th>
+              <th className="p-4 font-semibold text-gray-700">Interest Rate</th>
+              <th className="p-4 font-semibold text-gray-700">Processing Fee</th>
+              <th className="p-4 font-semibold text-gray-700">Tenure</th>
+              <th className="p-4 font-semibold text-gray-700"></th>
             </tr>
           </thead>
           <tbody>
             {loanOffers.map((offer, index) => (
-              <tr key={offer.id} className={`border-b ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+              <tr key={offer.id} className={`border-b ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
                 <td className="p-4 flex items-center space-x-4">
                   <img src={offer.logo} alt={offer.bankName} className="w-16 h-16" />
-                  <span>{offer.bankName}</span>
+                  <span className="text-gray-800">{offer.bankName}</span>
                 </td>
-                <td className="p-4">{offer.loanAmount}</td>
-                <td className="p-4">{offer.emi}</td>
-                <td className="p-4">{offer.interestRate}</td>
-                <td className="p-4">{offer.processingFee}</td>
-                <td className="p-4">{offer.tenure}</td>
+                <td className="p-4 text-gray-800">{offer.loanAmount}</td>
+                <td className="p-4 text-gray-800">{offer.emi}</td>
+                <td className="p-4 text-gray-800">{offer.interestRate}</td>
+                <td className="p-4 text-gray-800">{offer.processingFee}</td>
+                <td className="p-4 text-gray-800">{offer.tenure}</td>
                 <td className="p-4 flex space-x-2">
                   <button
                     onClick={() => openModal(offer)}
-                    className="text-blue-500 hover:underline"
+                    className="text-yellow-600 hover:underline"
                   >
                     View Details
                   </button>
                   <button
                     onClick={handleApply}
-                    className="bg-orange-500 text-white px-4 py-2 rounded-md"
+                    className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600"
                   >
                     Apply
                   </button>
