@@ -13,8 +13,8 @@ const LoanOffersTable = () => {
   const location = useLocation();
   const initialLoanDetails = location.state?.loanDetails || {};
 
-  const [loanAmount, setLoanAmount] = useState(initialLoanDetails.loanAmount || 1000000);
-  const [tenure, setTenure] = useState(initialLoanDetails.tenure || 20);
+  const [loanAmount, setLoanAmount] = useState(initialLoanDetails.requiredLoanAmount || 1000000);
+  const [tenure, setTenure] = useState(initialLoanDetails.tenure || 10);
   const [loading1, setLoading1] = useState(true);
 
   // Fetch bank rates from backend
@@ -66,24 +66,24 @@ const LoanOffersTable = () => {
     <div className="container mx-auto p-6 bg-gray-100 rounded-lg shadow-lg min-h-screen">
       <h1 className="text-3xl font-bold text-center text-yellow-600 mb-8">Best Loan Offers</h1>
 
-      <div className="mb-6 flex justify-between items-center">
-        <div>
-          <label className="font-semibold">Loan Amount:</label>
+      <div className="mb-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <div className="w-full md:w-auto">
+          <label className="font-semibold block md:inline-block">Loan Amount:</label>
           <input
             type="number"
             value={loanAmount}
             onChange={(e) => setLoanAmount(e.target.value)}
-            className="ml-2 p-2 border rounded"
+            className="ml-0 md:ml-2 p-2 border rounded w-full md:w-auto"
             min={0}
           />
         </div>
-        <div>
-          <label className="font-semibold">Tenure (Years):</label>
+        <div className="w-full md:w-auto">
+          <label className="font-semibold block md:inline-block">Tenure (Years):</label>
           <input
             type="number"
             value={tenure}
             onChange={(e) => setTenure(e.target.value)}
-            className="ml-2 p-2 border rounded"
+            className="ml-0 md:ml-2 p-2 border rounded w-full md:w-auto"
             min={1}
           />
         </div>
@@ -131,7 +131,6 @@ const LoanOffersTable = () => {
                         'Apply'
                       )}
                     </button>
-
                   </td>
                 </tr>
               ))}

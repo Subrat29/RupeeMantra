@@ -1,4 +1,3 @@
-// apiService.js
 import axios from 'axios';
 import { ENDPOINTS } from './apiConfig';
 
@@ -19,5 +18,3 @@ export const fetchAllLoanTypes = () => {
 export const addUserData = (data) => {
   return apiService.post(ENDPOINTS.ADD_USER_DATA, data);
 };
-
-// Export other API functions as needed

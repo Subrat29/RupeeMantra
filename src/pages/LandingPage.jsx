@@ -34,7 +34,7 @@ const LandingPage = () => {
       >
         <div className="flex justify-center items-center h-full bg-black bg-opacity-50">
           <div className="text-center text-white">
-            <h1 className="text-6xl font-bold">Welcome to RupeeMantra</h1>
+            <h1 className="text-5xl font-bold">Welcome to RupeeMantra</h1>
             <p className="mt-4 text-lg">Your trusted partner in financial growth and stability.</p>
             <a href="#features" className="mt-6 inline-block bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold">
               Explore Features
@@ -47,7 +47,7 @@ const LandingPage = () => {
       <section id="features" className="py-16 bg-white">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">Our Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-3">
             <div className="bg-yellow-100 p-6 rounded-lg shadow-lg transition transform hover:scale-105 duration-300">
               <h3 className="text-2xl font-semibold mb-4">EMI Calculator</h3>
               <p>Accurately calculate your loan EMIs and plan ahead for future finances.</p>
@@ -68,7 +68,7 @@ const LandingPage = () => {
       <section id="how-it-works" className="py-16 bg-gray-100">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">How It Works</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mx-3">
             <div className="bg-violet-100 p-6 rounded-lg shadow-lg transition transform hover:scale-105 duration-300">
               <h3 className="text-2xl font-semibold mb-4">Check Eligibility</h3>
               <p>Check your eligibility for a loan.</p>
@@ -133,7 +133,7 @@ const LandingPage = () => {
 
       {/* About Section */}
       <section id="about" className="py-16 bg-gray-50">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto px-3 text-center">
           <h2 className="text-4xl font-bold mb-8">About Us</h2>
           <p className="max-w-2xl mx-auto text-lg">
             At RupeeMantra, we believe in empowering individuals with simple and secure financial tools. Whether it's calculating EMIs or applying for loans, we offer solutions tailored to your needs.
