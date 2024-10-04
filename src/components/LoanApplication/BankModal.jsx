@@ -14,7 +14,7 @@ const BankModal = ({ bank, onClose }) => {
                     </svg>
                 </button>
 
-                <h2 className="text-2xl font-bold mb-4 text-yellow-600">{bank.bankName} - Loan Details</h2>
+                <h2 className="text-2xl font-bold mb-4 text-yellow-600">{bank} - Loan Details</h2>
 
                 <div className="space-y-6">
                     {/* Special Features Section */}

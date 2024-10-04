@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
+import { addUserData } from '../../../api/apiService'; // Import the API function for backend integration
+import { useNavigate } from 'react-router-dom'; // Assuming you're using React Router for navigation
 
 const PersonalLoanPage = () => {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         fullName: '',
-        mobileNumber: '',
-        city: '',
+        email: '',        // Added email field
+        mobile: '',
+        cityYouLiveIn: '',
         monthlyIncome: '',
-        loanAmount: '',
+        requiredLoanAmount: '',
         authorization: false,
     });
+
+    const [loading, setLoading] = useState(false);  // For submit button loading state
+    const [error, setError] = useState(null);  // To handle errors
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -18,10 +26,22 @@ const PersonalLoanPage = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert('Form Submitted!');
-        // Logic to handle form submission goes here
+        setLoading(true);
+        setError(null);
+
+        try {
+            // Send form data to the backend
+            await addUserData(formData);
+            // Navigate to the thank-you page after successful submission
+            navigate('/thank-you');
+        } catch (err) {
+            console.error('Error submitting personal loan data:', err);
+            setError('There was an error submitting your data. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -54,22 +74,33 @@ const PersonalLoanPage = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-gray-700">Mobile Number</label>
+                                <label className="block text-gray-700">Email</label>
                                 <input
-                                    type="tel"
-                                    name="mobileNumber"
-                                    value={formData.mobileNumber}
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                                     required
                                 />
                             </div>
                             <div>
-                                <label className="block text-gray-700">City</label>
+                                <label className="block text-gray-700">Mobile</label>
+                                <input
+                                    type="tel"
+                                    name="mobile"
+                                    value={formData.mobile}
+                                    onChange={handleChange}
+                                    className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-gray-700">City You Live In</label>
                                 <input
                                     type="text"
-                                    name="city"
-                                    value={formData.city}
+                                    name="cityYouLiveIn"
+                                    value={formData.cityYouLiveIn}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                                     required
@@ -87,11 +118,11 @@ const PersonalLoanPage = () => {
                                 />
                             </div>
                             <div>
-                                <label className="block text-gray-700">Loan Amount</label>
+                                <label className="block text-gray-700">Required Loan Amount</label>
                                 <input
                                     type="number"
-                                    name="loanAmount"
-                                    value={formData.loanAmount}
+                                    name="requiredLoanAmount"
+                                    value={formData.requiredLoanAmount}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
                                     required
@@ -111,11 +142,17 @@ const PersonalLoanPage = () => {
                                 I authorize RupeeMantra and its partners to contact me. This overrides my number being in the NDNC registry.
                             </label>
                         </div>
+                        {error && <p className="text-red-500 mt-2">{error}</p>}
                         <button
                             type="submit"
-                            className="w-full bg-yellow-400 text-white py-2 rounded-lg font-semibold hover:bg-yellow-500"
+                            className="w-full bg-yellow-400 text-white py-2 rounded-lg font-semibold hover:bg-yellow-500 flex items-center justify-center"
+                            disabled={loading}
                         >
-                            Apply
+                            {loading ? (
+                                <div className="w-5 h-5 border-2 border-t-2 border-gray-200 rounded-full animate-spin border-t-white"></div>
+                            ) : (
+                                'Apply'
+                            )}
                         </button>
                     </form>
                 </div>
@@ -171,3 +208,4 @@ const PersonalLoanPage = () => {
 };
 
 export default PersonalLoanPage;
+

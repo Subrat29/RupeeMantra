@@ -6,13 +6,13 @@ const LoanForm = ({ loanType }) => {
 
   const [loanDetails, setLoanDetails] = useState({
     gender: '',
-    city: '',
-    loanPurpose: '',
-    propertyLocation: '',
+    cityYouLiveIn: '',
+    purposeOfLoan: '',
+    cityWherePropertyIsLocated: '',
     employmentType: '',
-    income: '',
-    loanAmount: '',
-    name: '',
+    monthlyIncome: '',
+    requiredLoanAmount: '',
+    fullName: '',
     email: '',
     mobile: ''
   });
@@ -44,7 +44,8 @@ const LoanForm = ({ loanType }) => {
       return;
     }
     console.log("Loan Details: ", loanDetails);
-    navigate('/loan-offers');
+    // Pass loan details via navigate to LoanOffersTable
+    navigate('/loan-offers', { state: { loanDetails } });
   };
 
   return (
@@ -67,23 +68,23 @@ const LoanForm = ({ loanType }) => {
           {errors.gender && <p className="text-red-600 text-sm mt-1">{errors.gender}</p>}
         </div>
 
-        {/* City */}
+        {/* City You Live In */}
         <div>
           <label className="block mb-2 font-semibold text-gray-600">City You Live In</label>
           <input
             type="text"
-            name="city"
+            name="cityYouLiveIn"
             className="w-full p-3 border rounded-lg bg-gray-50 focus:ring focus:ring-yellow-300"
             onChange={handleChange}
           />
-          {errors.city && <p className="text-red-600 text-sm mt-1">{errors.city}</p>}
+          {errors.cityYouLiveIn && <p className="text-red-600 text-sm mt-1">{errors.cityYouLiveIn}</p>}
         </div>
 
-        {/* Loan Purpose */}
+        {/* Purpose of Loan */}
         <div>
           <label className="block mb-2 font-semibold text-gray-600">Purpose of Loan</label>
           <select
-            name="loanPurpose"
+            name="purposeOfLoan"
             className="w-full p-3 border rounded-lg bg-gray-50 focus:ring focus:ring-yellow-300"
             onChange={handleChange}
           >
@@ -92,19 +93,19 @@ const LoanForm = ({ loanType }) => {
             <option value="Commercial/Project Loan">Commercial/Project Loan</option>
             <option value="Transfer My Existing Loan">Transfer My Existing Loan</option>
           </select>
-          {errors.loanPurpose && <p className="text-red-600 text-sm mt-1">{errors.loanPurpose}</p>}
+          {errors.purposeOfLoan && <p className="text-red-600 text-sm mt-1">{errors.purposeOfLoan}</p>}
         </div>
 
-        {/* Property Location */}
+        {/* City Where Property is Located */}
         <div>
           <label className="block mb-2 font-semibold text-gray-600">City Where Property is Located</label>
           <input
             type="text"
-            name="propertyLocation"
+            name="cityWherePropertyIsLocated"
             className="w-full p-3 border rounded-lg bg-gray-50 focus:ring focus:ring-yellow-300"
             onChange={handleChange}
           />
-          {errors.propertyLocation && <p className="text-red-600 text-sm mt-1">{errors.propertyLocation}</p>}
+          {errors.cityWherePropertyIsLocated && <p className="text-red-600 text-sm mt-1">{errors.cityWherePropertyIsLocated}</p>}
         </div>
 
         {/* Employment Type */}
@@ -128,25 +129,25 @@ const LoanForm = ({ loanType }) => {
           <label className="block mb-2 font-semibold text-gray-600">Monthly Income</label>
           <input
             type="number"
-            name="income"
+            name="monthlyIncome"
             min={0}
             className="w-full p-3 border rounded-lg bg-gray-50 focus:ring focus:ring-yellow-300"
             onChange={handleChange}
           />
-          {errors.income && <p className="text-red-600 text-sm mt-1">{errors.income}</p>}
+          {errors.monthlyIncome && <p className="text-red-600 text-sm mt-1">{errors.monthlyIncome}</p>}
         </div>
 
-        {/* Loan Amount */}
+        {/* Required Loan Amount */}
         <div>
           <label className="block mb-2 font-semibold text-gray-600">Required Loan Amount</label>
           <input
             type="number"
-            name="loanAmount"
+            name="requiredLoanAmount"
             min={0}
             className="w-full p-3 border rounded-lg bg-gray-50 focus:ring focus:ring-yellow-300"
             onChange={handleChange}
           />
-          {errors.loanAmount && <p className="text-red-600 text-sm mt-1">{errors.loanAmount}</p>}
+          {errors.requiredLoanAmount && <p className="text-red-600 text-sm mt-1">{errors.requiredLoanAmount}</p>}
         </div>
       </div>
 
@@ -157,11 +158,11 @@ const LoanForm = ({ loanType }) => {
           <label className="block mb-2 font-semibold text-gray-600">Full Name</label>
           <input
             type="text"
-            name="name"
+            name="fullName"
             className="w-full p-3 border rounded-lg bg-gray-50 focus:ring focus:ring-yellow-300"
             onChange={handleChange}
           />
-          {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
+          {errors.fullName && <p className="text-red-600 text-sm mt-1">{errors.fullName}</p>}
         </div>
 
         {/* Email */}

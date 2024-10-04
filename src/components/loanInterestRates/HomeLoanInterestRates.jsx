@@ -1,84 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { fetchAllBankRates } from '../../../api/apiService';  // Import the API service
 
 const HomeLoanInterestRates = () => {
-    const loanData = [
-        { bank: "ICICI BANK", loanRate: "8.75%", processingFee: "0.25% of the loan amount" },
-        { bank: "State Bank of India (SBI)", loanRate: "8.50%", processingFee: "NIL" },
-        { bank: "LIC HFL", loanRate: "8.50%", processingFee: "0.25% + GST" },
-        { bank: "HDFC Bank", loanRate: "8.60%", processingFee: "50%* Off + GST" },
-        { bank: "Bank Of Baroda", loanRate: "8.40%", processingFee: "NIL" },
-        { bank: "IDFC FIRST BANK", loanRate: "8.85%", processingFee: "0.20%" },
-        { bank: "Union Bank", loanRate: "8.35%", processingFee: "NIL" },
-        { bank: "Kotak Bank", loanRate: "8.70%", processingFee: "Up to 1% of the loan amount" },
-        { bank: "Indian bank", loanRate: "8.40%", processingFee: "Up to 1.00% of the loan amount" },
-        { bank: "Yes Bank", loanRate: "9.00%", processingFee: "For Salaried - Rs 10,000+GST; Self Employed - 0.5%+GST" },
-        { bank: "Sundaram Home Finance", loanRate: "8.75%", processingFee: "Up to 0.75% of the loan amount with applicable GST" },
-        { bank: "DCB Bank", loanRate: "9.75%", processingFee: "Up to 2% of the loan amount, subject to a minimum of Rs.5,000" },
-        { bank: "Tata Capital", loanRate: "8.70%", processingFee: "Initial Processing Fees of Rs. 999 + GST" },
-        { bank: "PNB Housing Finance", loanRate: "8.50%", processingFee: "Rs 10,000 + GST" },
-        { bank: "Federal Bank", loanRate: "8.50%", processingFee: "Rs 10,000 + Applicable taxes" },
-        { bank: "Axis Bank", loanRate: "8.75%", processingFee: "Up to 1% (Min. Rs. 10,000) + GST" },
-        { bank: "Bajaj Housing Finance", loanRate: "8.50%", processingFee: "NIL" },
-        { bank: "L & T Housing Finance", loanRate: "8.70%", processingFee: "0.25% + GST" },
-        { bank: "Bandhan Bank", loanRate: "8.65%", processingFee: "0.25% + GST" },
-        { bank: "Shriram Housing Finance Limited", loanRate: "8.90%", processingFee: "Up to 0.50% of the loan amount or Rs. 5,000 whichever is higher + GST" },
-        { bank: "RBL", loanRate: "8.90%", processingFee: "Up to 1.5% of the loan amount or Rs 15,000, whichever is higher + GST" },
-        { bank: "Piramal Housing Finance", loanRate: "9.50%", processingFee: "0.75% of the loan amount" },
-        { bank: "Fullerton Home Loan", loanRate: "8.75%", processingFee: "Up to 3% of the loan amount" },
-        { bank: "Aditya Birla Housing Finance", loanRate: "8.60%", processingFee: "Up to 1% of the loan amount + GST" },
-        { bank: "Standard Chartered", loanRate: "8.40%", processingFee: "0.25% + GST" },
-        { bank: "Indostar Capital Home Finance", loanRate: "12.00%", processingFee: "Up to 1.25% of the loan amount" },
-        { bank: "Central Bank Of India", loanRate: "8.35%", processingFee: "NIL" },
-        { bank: "IIFL", loanRate: "8.75%", processingFee: "Up to 2% of the loan amount" },
-        { bank: "Edelweiss Bank", loanRate: "8.70%", processingFee: "Up to 2% of the loan amount plus applicable taxes" },
-        { bank: "Bank Of India", loanRate: "8.40%", processingFee: "0.25% + GST" },
-        { bank: "South Indian Bank", loanRate: "8.70%", processingFee: "0.50% of the loan amount + GST (Min. Rs 5,000; Max. Rs 10,000)" },
-        { bank: "Deutsche Bank", loanRate: "8.75%", processingFee: "Up to 1% of the loan amount" },
-        { bank: "Muthoot Finance", loanRate: "11.00%", processingFee: "Up to 2% of the loan amount" },
-        { bank: "IndusInd Bank", loanRate: "8.40%", processingFee: "1% of loan amount or Rs 10,000 whichever is higher" },
-        { bank: "IDBI Bank", loanRate: "8.45%", processingFee: "NIL" },
-        { bank: "Godrej Housing Finance", loanRate: "8.55%", processingFee: "3% of the loan amount" },
-        { bank: "AU Small Finance Bank", loanRate: "9.50%", processingFee: "Up to 2% of the loan amount" },
-        { bank: "Aadhar Housing Finance", loanRate: "9.99%", processingFee: "0.5% - 2% of the loan amount" },
-        { bank: "Hinduja Housing Finance", loanRate: "10.50%", processingFee: "Rs. 4,600 (including service tax)" },
-        { bank: "Cholamandalam", loanRate: "11.50%", processingFee: "Rs 5,000 (including GST)" },
-        { bank: "Hero Housing Finance", loanRate: "10.00%", processingFee: "1% of the loan amount" },
-        { bank: "Shubham Housing Finance", loanRate: "9.90%", processingFee: "1% of the loan amount" },
-        { bank: "India Shelter", loanRate: "10.05%", processingFee: "Up to 2.5% (excluding GST)" },
-        { bank: "SVC Co-Operative Bank", loanRate: "8.50%", processingFee: "NIL" },
-        { bank: "ICICI Home Finance", loanRate: "9.10%", processingFee: "0.75%-3%" },
-        { bank: "Indian Overseas Bank", loanRate: "8.40%", processingFee: "NIL" },
-        { bank: "Indiabulls Housing Finance", loanRate: "8.75%", processingFee: "0.50% for salaried and 1% for SENP + Applicable taxes" },
-        { bank: "CSB Home Loan", loanRate: "9.69%", processingFee: "0.50% of the loan amount" },
-        { bank: "Cent Bank Home Finance Limited", loanRate: "9.95%", processingFee: "As per sanction terms" },
-        { bank: "Mahindra Home Finance", loanRate: "8.50%", processingFee: "1-3.5% of the sanctioned amount +GST" },
-        { bank: "Bank of Maharashtra", loanRate: "8.35%", processingFee: "NIL" },
-        { bank: "GIC Housing Finance", loanRate: "8.80%", processingFee: "Rs. 2500 + GST" },
-        { bank: "Punjab and Sind Bank", loanRate: "8.50%", processingFee: "Up to 0.25% of the loan amount" },
-        { bank: "Utkarsh Small Finance Bank", loanRate: "9.00%", processingFee: "0.25% – 1% of the loan amount plus applicable taxes" },
-        { bank: "Aavas Financiers Limited", loanRate: "8.50%", processingFee: "1% to 2% of the loan amount" },
-    ];
+    const [loanData, setLoanData] = useState([]);  // State to hold loan data
+    const [loading, setLoading] = useState(true);  // State to manage loading
+    const [error, setError] = useState(null);      // State to manage error
+
+    useEffect(() => {
+        const getLoanData = async () => {
+            try {
+                const data = await fetchAllBankRates();
+                setLoanData(data.data);
+                console.log('Loan Data:', data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        getLoanData();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className='flex justify-center'>
+                <div className="w-10 h-10 border-2 border-t-2 border-gray-200 text rounded-full animate-spin border-t-yellow-500"></div>
+            </div>
+        )
+    }
+
+    if (error) {
+        return <p className="text-center text-lg text-red-600">Error: {error}</p>;
+    }
 
     return (
         <div className="container mx-auto px-40 my-10">
             <h1 className="text-3xl font-bold mb-8 text-center">Home Loan Interest Rates Comparison in India</h1>
 
-            {/* Table Section */} 
+            {/* Table Section */}
             <div className="overflow-x-auto border">
                 <table className="min-w-full bg-white shadow-md rounded overflow-hidden">
                     <thead>
                         <tr className="bg-yellow-600 text-white">
-                            <th className="w-1/3 py-4 px-6 text-left">Bank</th>
-                            <th className="w-1/4 py-4 px-6 text-left">Loan Rate</th>
+                            <th className="w-1/3 py-4 px-6 text-left">Bank Name</th>
+                            <th className="w-1/4 py-4 px-6 text-left">Interest Rate</th>
                             <th className="w-1/4 py-4 px-6 text-left">Processing Fee</th>
                         </tr>
                     </thead>
                     <tbody>
                         {loanData.map((loan, index) => (
-                            <tr key={index} className="border-b">
-                                <td className="py-4 px-6">{loan.bank}</td>
-                                <td className="py-4 px-6">{loan.loanRate}</td>
-                                <td className="py-4 px-6">{loan.processingFee}</td>
+                            <tr key={loan.BankId} className="border-b">
+                                <td className="py-4 px-6">{loan.BankName}</td>
+                                <td className="py-4 px-6">{loan.InterestRate}</td>
+                                <td className="py-4 px-6">{loan.ProcessingFee}</td>
                             </tr>
                         ))}
                     </tbody>
